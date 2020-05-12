@@ -9,6 +9,8 @@ import datetime
 import time
 import numpy as np
 from pprint import pprint
+from .models import User
+
 
 # Create your views here.
 TOKEN = '1113179664:AAEaV5nToFyEdoOAF5NrhjjncnLCJKbHXGs'
@@ -46,6 +48,10 @@ def message_start(message):
     'Для просмотра инструкции пользователя нажмите /help.\n\n\n'+
     'Powered by Alexey Horbunov\n'+
     '@Alexey_Horbunov', reply_markup=keyboard_1)
+    user = User()
+    user.user_id = message.chat.id
+    user.save()
+    
 k = 0
 @bot.message_handler(content_types=['text'])
 def bot_answer_to_text(message):
