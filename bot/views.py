@@ -56,11 +56,13 @@ k = 0
 @bot.message_handler(content_types=['text'])
 def bot_answer_to_text(message):
     if message.text.lower() == 'get_date':
-        date = '2020-05-14 20:12:53.345238+00'
+
         user = User()
-        date_mes = user.objects.get(date_pubs__exact=date)
-        for i in date_mes:
-            bot.send_message(message.chat.id, str(i))
+        id = 402954445
+        info = user.objects.get(user_id__exact=id)
+        # for i in date_mes:
+        #     bot.send_message(message.chat.id, str(i))
+        print(info)
 
     elif message.text.lower() == 'test':
         keyboard = types.InlineKeyboardMarkup(row_width=1)
