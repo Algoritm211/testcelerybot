@@ -28,7 +28,7 @@ class UpdateBot(APIView):
 GOTOSET, FINAL = range(2)
 
 keyboard_1 = telebot.types.ReplyKeyboardMarkup(True, False, row_width=1)
-keyboard_1.row('My MarketCap', 'test')
+keyboard_1.row('get_date', 'test')
 
 MYLIST = ['item1', 'item2', 'item3', 'item4', 'item5', 'item6']
 
@@ -51,15 +51,13 @@ def message_start(message):
     user = User()
     user.user_id = message.chat.id
     user.save()
-    
+
 k = 0
 @bot.message_handler(content_types=['text'])
 def bot_answer_to_text(message):
-    if message.text.lower() == 'my market':
-        get_data = test.get_user_crypto(message.chat.id)
-        if not get_data:
-            bot.send_message(message.chat.id, 'B базе нет отслеживаемых Вами криптовалют, нажмите /set, ' +
-            'чтобы указать желаемые цифровые активы.')
+    if message.text.lower() == 'get_date':
+        pass
+
     elif message.text.lower() == 'test':
         keyboard = types.InlineKeyboardMarkup(row_width=1)
         item1 = types.InlineKeyboardButton('back', callback_data='back')
