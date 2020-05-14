@@ -6,4 +6,4 @@ class User(models.Model):
     date_pubs = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.user_id
+        return self.user_id + '--------' + self.date_pubs
