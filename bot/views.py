@@ -60,9 +60,8 @@ def bot_answer_to_text(message):
         user = User()
         id = 402954445
         info = User.objects.get(user_id__exact=id)
-        # for i in date_mes:
-        #     bot.send_message(message.chat.id, str(i))
-        print(type(info))
+        bot.send_message(message.chat.id, str(info))
+        # print(info)
 
     elif message.text.lower() == 'test':
         keyboard = types.InlineKeyboardMarkup(row_width=1)
