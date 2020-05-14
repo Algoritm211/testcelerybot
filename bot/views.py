@@ -59,7 +59,7 @@ def bot_answer_to_text(message):
 
         user = User()
         id = 402954445
-        info = user.objects.get(user_id__exact=id)
+        info = User.objects.get(user_id__exact=id)
         # for i in date_mes:
         #     bot.send_message(message.chat.id, str(i))
         print(info)
