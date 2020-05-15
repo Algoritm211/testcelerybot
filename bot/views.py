@@ -10,7 +10,7 @@ import time
 import numpy as np
 from pprint import pprint
 from .models import User
-import market
+from . import market
 
 
 # Create your views here.
