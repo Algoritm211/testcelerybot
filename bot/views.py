@@ -126,7 +126,7 @@ def message_cryptos(message):
             'чтобы указать желаемые цифровые активы.')
         else:
             bot.send_message(message.chat.id, 'Беру информацию о Ваших токенах и связываюсь с CoinMarketCap......')
-            drop_db = info.values_list('coins')
+            drop_db = User.objects.get(user_id=message.chat.id).values_list('coins')
             data = market.get_data()
             now = datetime.datetime.now()
             id = 1
