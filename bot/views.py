@@ -121,12 +121,14 @@ def set_crypto(message):
 def message_cryptos(message):
     if message.text.lower() == 'my marketcap':
         info = User.objects.get(user_id=message.chat.id)
+        print(info)
         if info.coins == None:
             bot.send_message(message.chat.id, 'B базе нет отслеживаемых Вами криптовалют, нажмите /set, ' +
             'чтобы указать желаемые цифровые активы.')
         else:
             bot.send_message(message.chat.id, 'Беру информацию о Ваших токенах и связываюсь с CoinMarketCap......')
             drop_db = info.coins.replace('[','').replace(']', '').split(',')
+            print(drop_db)
             data = market.get_data()
             now = datetime.datetime.now()
             id = 1
