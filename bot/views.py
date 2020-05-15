@@ -79,8 +79,11 @@ def message_help(message):
 
 @bot.message_handler(commands=['getinfobot'])
 def get_info_bitbullbot(message):
-    all_users = str(dbhelper.get_number_of_all_users())
+    # all_users = str(dbhelper.get_number_of_all_users())
     bot.send_message(message.chat.id, 'ℹПодключаюсь к базе данных и получаю информацию........')
+    all = User.objects.all()
+    print(all)
+    print(type(all))
 
 
 @bot.message_handler(commands=['set'], func=lambda message: get_state(message) == GOTOSET)
