@@ -97,7 +97,7 @@ def message_to_set_coins(message):
 def set_crypto(message):
     bot.send_message(message.chat.id, 'Проверяю наличие введенных активов на CoinMarketCap.....')
     tickers = list(set([elem.upper() for elem in message.text.split()]))
-    print(tickers)
+    # print(tickers)
     check = []
     data = market.get_data()
     for i in tickers:
@@ -126,9 +126,7 @@ def message_cryptos(message):
             'чтобы указать желаемые цифровые активы.')
         else:
             bot.send_message(message.chat.id, 'Беру информацию о Ваших токенах и связываюсь с CoinMarketCap......')
-            drop_db = info.coins
-            print(drop_db)
-            print(type(drop_db))
+            drop_db = info.values_list('coins')
             data = market.get_data()
             now = datetime.datetime.now()
             id = 1
