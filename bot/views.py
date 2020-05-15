@@ -109,7 +109,10 @@ def set_crypto(message):
         for i in check:
             text += i + '\n'
         info = User.objects.get(user_id=message.chat.id)
-        info.coins = check
+        text = ''
+        for i in check:
+            text += i
+        info.coins = text
         info.save()
         bot.send_message(message.chat.id, text, reply_markup=keyboard_1)
     else:
