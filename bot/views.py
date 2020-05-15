@@ -82,9 +82,9 @@ def get_info_bitbullbot(message):
     # all_users = str(dbhelper.get_number_of_all_users())
     bot.send_message(message.chat.id, 'ℹПодключаюсь к базе данных и получаю информацию........')
     all = User.objects.all()
-    for i in all:
-        print(i.user_id)
-    print(type(all))
+    # for i in all:
+    #     print(i.user_id)
+    # print(type(all))
 
 
 @bot.message_handler(commands=['set'], func=lambda message: get_state(message) == GOTOSET)
