@@ -135,6 +135,7 @@ def message_cryptos(message):
             id = 1
             text = 'Отслеживаемые Вами криптовалюты: \n\n'
             for i in drop_db:
+                print(i)
                 for j in data['data']:
                     if i == j['symbol'] and j['name'] != 'BuySell':
                         text += '<b>№' + str(id) + '</b> <i>' +j['name'] + '</i> <code>' + str(round(j['quote']['USD']['price'], 3)) + '</code> USD ' + \
