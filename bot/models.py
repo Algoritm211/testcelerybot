@@ -2,8 +2,9 @@ from django.db import models
 
 # Create your models here.
 class User(models.Model):
-    user_id = models.CharField(max_length=200)
+    user_id = models.CharField(max_length=200, unique=True)
     date_pubs = models.DateTimeField(auto_now_add=True)
+    coins = models.TextField(blank=True)
 
     def __str__(self):
-        return str(self.user_id) + '--------' + str(self.date_pubs)
+        return self.user_id
