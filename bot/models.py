@@ -9,4 +9,4 @@ class User(models.Model):
     # send_daily_prices = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.user_id, self.date_pubs, self.coins
+        return self.user_id
