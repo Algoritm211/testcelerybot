@@ -1,5 +1,7 @@
 from django.shortcuts import render
+
 __author__ = '@Alexey_Horbunov'
+
 from rest_framework.response import Response
 from rest_framework.views import APIView
 import telebot
@@ -12,10 +14,10 @@ from pprint import pprint
 from .models import User
 from . import market
 
-
 # Create your views here.
 TOKEN = '1113179664:AAEaV5nToFyEdoOAF5NrhjjncnLCJKbHXGs'
 bot = telebot.TeleBot(TOKEN)
+
 
 class UpdateBot(APIView):
 
@@ -24,7 +26,7 @@ class UpdateBot(APIView):
         update = telebot.types.Update.de_json(json_string)
         bot.process_new_updates([update])
 
-        return Response({'code':200})
+        return Response({'code': 200})
 
 
 GOTOSET, FINAL = range(2)
@@ -32,8 +34,9 @@ GOTOSET, FINAL = range(2)
 keyboard_1 = telebot.types.ReplyKeyboardMarkup(True, False, row_width=1)
 keyboard_1.row('My MarketCap')
 
-
 USER_STATE = defaultdict(lambda: GOTOSET)
+
+
 def get_state(message):
     return USER_STATE[message.chat.id]
 
@@ -41,7 +44,9 @@ def get_state(message):
 def update_state(message, state):
     USER_STATE[message.chat.id] = state
 
+
 '''WEBHOOK'''
+
 
 # app = Flask(__name__)
 #
@@ -60,22 +65,25 @@ def update_state(message, state):
 
 @bot.message_handler(commands=['start'])
 def message_start(message):
-    bot.send_message(message.chat.id, '🤖Здравствуйте, '+ message.from_user.first_name + '!\n' \
-    '💵Я могу показать Вам цены цифровых активов с биржи Binance, а также отслеживать Ваши криптовалюты \n\n' +
-    'Для просмотра инструкции пользователя нажмите /help.\n\n\n', reply_markup=keyboard_1)
+    bot.send_message(message.chat.id, '🤖Здравствуйте, ' + message.from_user.first_name + '!\n' \
+                                                                                          '💵Я могу показать Вам цены цифровых активов с биржи Binance, а также отслеживать Ваши криптовалюты \n\n' +
+                     'Для просмотра инструкции пользователя нажмите /help.\n\n\n', reply_markup=keyboard_1)
     curr_date = now.strftime("%d-%m-%Y")
     user = User()
     user.user_id = message.chat.id
     user.save()
+
 
 @bot.message_handler(commands=['help'])
 def message_help(message):
     markup_author = types.InlineKeyboardMarkup(row_width=1)
     item_author = types.InlineKeyboardButton('Об авторе бота', callback_data='author')
     # markup_author.add(item_author)
-    bot.send_message(message.chat.id, '❓Итак, в настоящий момент бот может показать Вам цену цифровых активов с биржи ' +
-    'Binance в парах с биткоином и USDT (для этого достаточно ввести тикер актива (Например, eth)), ' +
-    'а также отслеживать введенные Вами активы(команда /set). ', reply_markup=markup_author)
+    bot.send_message(message.chat.id,
+                     '❓Итак, в настоящий момент бот может показать Вам цену цифровых активов с биржи ' +
+                     'Binance в парах с биткоином и USDT (для этого достаточно ввести тикер актива (Например, eth)), ' +
+                     'а также отслеживать введенные Вами активы(команда /set). ', reply_markup=markup_author)
+
 
 @bot.message_handler(commands=['getinfobot'])
 def get_info_bitbullbot(message):
@@ -89,13 +97,14 @@ def get_info_bitbullbot(message):
 
 @bot.message_handler(commands=['set'], func=lambda message: get_state(message) == GOTOSET)
 def message_to_set_coins(message):
-    bot.send_message(message.chat.id, 'Напишите токены, цены которых Вы бы хотели отслеживать, котировки '+
-                            'будут браться с портала CoinMarketCap.\nВводите тикеры токенов через пробел. ' +
-                            '<b>Например, btc eth ada xrp.</b> \n\n' +
-                            'После этого достаточно нажать кнопку My CoinMarket для отслеживания криптовалют',
-                                parse_mode='HTML')
+    bot.send_message(message.chat.id, 'Напишите токены, цены которых Вы бы хотели отслеживать, котировки ' +
+                     'будут браться с портала CoinMarketCap.\nВводите тикеры токенов через пробел. ' +
+                     '<b>Например, btc eth ada xrp.</b> \n\n' +
+                     'После этого достаточно нажать кнопку My CoinMarket для отслеживания криптовалют',
+                     parse_mode='HTML')
     update_state(message, FINAL)
     # bot.send_message(message.chat.id, 'Я тут')
+
 
 @bot.message_handler(func=lambda message: get_state(message) == FINAL)
 def set_crypto(message):
@@ -121,8 +130,9 @@ def set_crypto(message):
         bot.send_message(message.chat.id, text, reply_markup=keyboard_1)
     else:
         bot.send_message(message.chat.id, 'Из введенных Вами криптовалют ни одна не торгуется на CoinMarketCap. ' +
-                                            'Нажмите /set и введите активы еще раз. ')
+                         'Нажмите /set и введите активы еще раз. ')
     update_state(message, GOTOSET)
+
 
 @bot.message_handler(content_types=['text'], func=lambda message: get_state(message) != FINAL)
 def message_cryptos(message):
@@ -131,7 +141,7 @@ def message_cryptos(message):
         print(info)
         if info.coins == None:
             bot.send_message(message.chat.id, 'B базе нет отслеживаемых Вами криптовалют, нажмите /set, ' +
-            'чтобы указать желаемые цифровые активы.')
+                             'чтобы указать желаемые цифровые активы.')
         else:
             bot.send_message(message.chat.id, 'Беру информацию о Ваших токенах и связываюсь с CoinMarketCap......')
             drop_db = info.coins.split(',')
@@ -145,7 +155,8 @@ def message_cryptos(message):
                 print(i)
                 for j in data['data']:
                     if i == j['symbol'] and j['name'] != 'BuySell':
-                        text += '<b>№' + str(id) + '</b> <i>' +j['name'] + '</i> <code>' + str(round(j['quote']['USD']['price'], 3)) + '</code> USD ' + \
+                        text += '<b>№' + str(id) + '</b> <i>' + j['name'] + '</i> <code>' + str(
+                            round(j['quote']['USD']['price'], 3)) + '</code> USD ' + \
                                 str(round(j['quote']['USD']['percent_change_24h'], 2)) + '(%|24h)\n\n'
 
                         id += 1
@@ -157,9 +168,9 @@ def message_cryptos(message):
         mes_usdt = parse.get_crypto_to_usdt(message.text)
         mes_btc = parse.get_crypto_to_btc(message.text)
         bot.send_message(message.chat.id, 'ℹПодключаюсь к Binance, беру актуальную информацию')
-        text = '~~~~~~~~~~~~~\n'+'Данные с биржи 🔸Binance🔸\n'+'~~~~~~~~~~~~~\n'+'Информация по паре ' + text_up + '-USDT:\n' +\
-                '1 ' + text_up + ' = ' + mes_usdt + '\n' +'Информация по паре ' + text_up + '-BTC:\n' + '1 ' + text_up + ' = ' +\
-                 mes_btc + '\n'
+        text = '~~~~~~~~~~~~~\n' + 'Данные с биржи 🔸Binance🔸\n' + '~~~~~~~~~~~~~\n' + 'Информация по паре ' + text_up + '-USDT:\n' + \
+               '1 ' + text_up + ' = ' + mes_usdt + '\n' + 'Информация по паре ' + text_up + '-BTC:\n' + '1 ' + text_up + ' = ' + \
+               mes_btc + '\n'
         if 'не торгуется' in mes_usdt and mes_btc:
             bot.send_message(message.chat.id, 'Введенный Вами тикер токена не торгуется против USDT и BTC')
         else:
@@ -174,6 +185,11 @@ def inline_buttons(call):
             bot.send_document(call.message.chat.id, help_file)
         elif call.data == 'author':
             bot.send_message(call.message.chat.id, 'Команда 2348', parse_mode='HTML')
+
+
+def send_daily_cryptos(message):
+    pass
+
 
 # CRYPTOS = defaultdict(lambda: {})
 #
