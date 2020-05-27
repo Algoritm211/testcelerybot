@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f249ae44-9a1c-4bc8-b064-030f1431b9fc" name="Default Changelist" comment="" />
+    <list default="true" id="f249ae44-9a1c-4bc8-b064-030f1431b9fc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bot/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testbot/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/testbot/settings.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -9,6 +15,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="InvalidFacetManager">
+    <ignored-facets>
+      <facet id="testbot/invalid/Django" />
+    </ignored-facets>
   </component>
   <component name="ProjectId" id="1bto0dhUO8NfnwXp3e60PPjqwjA" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -129,8 +140,5 @@
       <screen x="0" y="23" width="1440" height="781" />
     </state>
     <state width="233" height="457" key="HiddenNamespacesPopup/0.23.1440.781@0.23.1440.781" timestamp="1589460730955" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/testbot$views.coverage" NAME="views Coverage Results" MODIFIED="1589460652261" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bot" />
   </component>
 </project>

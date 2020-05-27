@@ -15,6 +15,7 @@ configparser = "*"
 pytelegrambotapi = "*"
 gunicorn = "*"
 numpy = "*"
+celery = "*"
 
 [dev-packages]
 
