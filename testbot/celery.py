@@ -19,5 +19,5 @@ app.conf.beat = {
 }
 
 # REDIS_URL = 'redis://h:p5067e3205757872a84ea31d841e6cf3ce88f7fcb568d463ff4dc1708d8f8c792@ec2-3-220-244-30.compute-1.amazonaws.com:14059'
-app.conf.update(BROKER_URL=os.environ[REDIS_URL],
-                CELERY_RESULT_BACKEND=os.environ[REDIS_URL])
+# app.conf.update(BROKER_URL=os.environ[REDIS_URL],
+#                 CELERY_RESULT_BACKEND=os.environ[REDIS_URL])
