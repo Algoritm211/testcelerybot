@@ -18,6 +18,7 @@ numpy = "*"
 celery = "*"
 redis = "*"
 django-redis-cache = "*"
+django-heroku = "*"
 
 
 [dev-packages]
