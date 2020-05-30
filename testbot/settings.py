@@ -125,6 +125,7 @@ STATIC_URL = '/static/'
 # redis settings
 REDIS_URL = 'redis://h:p5067e3205757872a84ea31d841e6cf3ce88f7fcb568d463ff4dc1708d8f8c792@ec2-3-220-244-30.compute-1.amazonaws.com:14059'
 redis_url = urlparse.urlparse(os.environ.get(REDIS_URL))
+
 CACHES = {
     "default": {
         "BACKEND": "redis_cache.RedisCache",
@@ -136,6 +137,7 @@ CACHES = {
     }
 
 }
+BROKER_URL = redis.from_url(os.environ.get(REDIS_URL))
 CELERY_BROKER_URL = REDIS_URL
 CELERY_RESULT_BACKEND = REDIS_URL
 # REDIS_HOST = 'ec2-3-220-244-30.compute-1.amazonaws.com'
