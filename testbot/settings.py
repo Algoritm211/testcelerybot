@@ -137,7 +137,7 @@ CACHES = {
     }
 
 }
-BROKER_URL = redis.from_url(os.environ.get(REDIS_URL))
+# BROKER_URL = redis.from_url(os.environ.get(REDIS_URL))
 
 CELERY_BROKER_URL = REDIS_URL
 CELERY_RESULT_BACKEND = REDIS_URL
