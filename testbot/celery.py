@@ -4,7 +4,8 @@ from celery import Celery
 from celery.schedules import crontab
 # from django.conf import settings
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'testbot.settings')
+# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'testbot.settings')
+os.environ[ 'DJANGO_SETTINGS_MODULE' ] = "proj.settings"
 
 app = Celery('testbot')
 app.config.from_object('django.conf:settings', namespace='CELERY')
