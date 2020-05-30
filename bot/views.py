@@ -68,6 +68,7 @@ def message_start(message):
     bot.send_message(message.chat.id, '🤖Здравствуйте, ' + message.from_user.first_name + '!\n' \
                                                                                           '💵Я могу показать Вам цены цифровых активов с биржи Binance, а также отслеживать Ваши криптовалюты \n\n' +
                      'Для просмотра инструкции пользователя нажмите /help.\n\n\n', reply_markup=keyboard_1)
+    now = datetime.datetime.now()
     curr_date = now.strftime("%d-%m-%Y")
     user = User()
     user.user_id = message.chat.id
