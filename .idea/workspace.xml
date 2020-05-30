@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f249ae44-9a1c-4bc8-b064-030f1431b9fc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/testbot/celery.py" beforeDir="false" afterPath="$PROJECT_DIR$/testbot/celery.py" afterDir="false" />
-    </list>
+    <list default="true" id="f249ae44-9a1c-4bc8-b064-030f1431b9fc" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -140,9 +138,10 @@
       <screen x="0" y="23" width="1440" height="781" />
     </state>
     <state width="233" height="457" key="HiddenNamespacesPopup/0.23.1440.781@0.23.1440.781" timestamp="1589460730955" />
-    <state x="385" y="123" width="670" height="676" key="search.everywhere.popup" timestamp="1590826407656">
-      <screen x="0" y="23" width="1440" height="776" />
+    <state x="385" y="124" width="670" height="681" key="search.everywhere.popup" timestamp="1590849899833">
+      <screen x="0" y="23" width="1440" height="781" />
     </state>
     <state x="385" y="123" width="670" height="676" key="search.everywhere.popup/0.23.1440.776@0.23.1440.776" timestamp="1590826407656" />
+    <state x="385" y="124" width="670" height="681" key="search.everywhere.popup/0.23.1440.781@0.23.1440.781" timestamp="1590849899833" />
   </component>
 </project>
