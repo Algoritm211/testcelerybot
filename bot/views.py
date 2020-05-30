@@ -10,7 +10,7 @@ from collections import defaultdict
 import datetime
 import time
 import numpy as np
-from pprint import pprint
+# from pprint import pprint
 from .models import User
 from . import market
 
@@ -146,8 +146,8 @@ def message_cryptos(message):
         else:
             bot.send_message(message.chat.id, 'Беру информацию о Ваших токенах и связываюсь с CoinMarketCap......')
             drop_db = info.coins.split(',')
-            print(drop_db)
-            print(type(drop_db))
+            # print(drop_db)
+            # print(type(drop_db))
             data = market.get_data()
             now = datetime.datetime.now()
             id = 1
