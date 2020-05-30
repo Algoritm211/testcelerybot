@@ -10,7 +10,7 @@ os.environ['DJANGO_SETTINGS_MODULE'] = "testbot.settings"
 
 app = Celery('testbot')
 # app.config.from_object('django.conf:settings', namespace='CELERY')
-app.conf(celeryconfig)
+app.config(celeryconfig)
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 
 # celery beat task
