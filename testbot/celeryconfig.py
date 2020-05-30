@@ -11,7 +11,6 @@ CACHES = {
         "LOCATION": "{0}:{1}".format(redis_url.hostname, redis_url.port),
         "OPTIONS": {
             "PASSWORD": redis_url.password,
-            "DB": 0,
         }
     }
 
