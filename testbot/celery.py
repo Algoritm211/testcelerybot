@@ -3,7 +3,7 @@ import os
 from celery import Celery
 from celery.schedules import crontab
 from django.conf import settings
-import celeryconfig
+from . import celeryconfig
 # os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'testbot.settings')
 os.environ[ 'DJANGO_SETTINGS_MODULE' ] = "testbot.settings"
 
