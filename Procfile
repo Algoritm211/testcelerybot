@@ -1,2 +1,2 @@
 web: gunicorn testbot.wsgi --log-file -
-worker: celery -A bot.tasks worker -B --loglevel=info
+worker: celery -A testbot worker -B --loglevel=info
