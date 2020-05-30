@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import redis
-from urllib.parse import urlparse
+import urllib.parse as urlparse
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
