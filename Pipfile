@@ -16,6 +16,7 @@ pytelegrambotapi = "*"
 gunicorn = "*"
 numpy = "*"
 celery = "*"
+redis = "*"
 
 [dev-packages]
 
