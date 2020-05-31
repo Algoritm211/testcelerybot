@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bot',
-    'django_celery_beat',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
