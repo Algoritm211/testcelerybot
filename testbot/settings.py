@@ -126,6 +126,7 @@ STATIC_URL = '/static/'
 REDIS_URL = 'redis://h:p5067e3205757872a84ea31d841e6cf3ce88f7fcb568d463ff4dc1708d8f8c792@ec2-3-220-244-30.compute-1.amazonaws.com:14059'
 redis_url = urlparse.urlparse(os.environ.get(REDIS_URL))
 
+r = redis.from_url(os.environ.get(REDIS_URL))
 CACHES = {
     "default": {
         "BACKEND": "redis_cache.RedisCache",
