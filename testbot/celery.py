@@ -9,9 +9,9 @@ from django.conf import settings
 os.environ['DJANGO_SETTINGS_MODULE'] = "testbot.settings"
 
 app = Celery('testbot')
-app.config.from_object('django.conf:settings', namespace='CELERY')
-# app.conf = settings
-app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
+# app.config.from_object('django.conf:settings', namespace='CELERY')
+app.conf = settings
+app.autodiscover_tasks()
 
 # celery beat task
 
