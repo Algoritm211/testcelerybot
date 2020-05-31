@@ -1,16 +1,16 @@
-# from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 import os
 from celery import Celery
 from celery.schedules import crontab
 from django.conf import settings
 # from . import celeryconfig
 
-# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'testbot.settings')
-os.environ['DJANGO_SETTINGS_MODULE'] = "testbot.settings"
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'testbot.settings')
+# os.environ['DJANGO_SETTINGS_MODULE'] = "testbot.settings"
 
 app = Celery('testbot')
-# app.config.from_object('django.conf:settings', namespace='CELERY')
-app.conf = settings
+app.config.from_object('django.conf:settings', namespace='CELERY')
+# app.conf = settings
 app.autodiscover_tasks()
 
 # celery beat task
