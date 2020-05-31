@@ -1,2 +1,2 @@
 web: gunicorn testbot.wsgi
-worker: celery -A testbot worker -l info -B -E
+worker: celery -A testbot worker --loglevel=info
