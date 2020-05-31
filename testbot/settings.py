@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bot',
 ]
+INSTALLED_APPS += ( "djcelery",)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
