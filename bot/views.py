@@ -10,6 +10,7 @@ from collections import defaultdict
 import datetime
 import time
 import numpy as np
+from .tasks import send_daily_cryptocurrency
 # from pprint import pprint
 from .models import User
 from . import market
@@ -44,6 +45,8 @@ def get_state(message):
 def update_state(message, state):
     USER_STATE[message.chat.id] = state
 
+
+send_daily_cryptocurrency()
 
 '''WEBHOOK'''
 
