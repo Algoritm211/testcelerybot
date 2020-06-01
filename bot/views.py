@@ -199,7 +199,7 @@ def inline_buttons(call):
 #             bot.send_message(user.user_id, 'У не вас стоит напоминание')
 
 
-send_daily_cryptocurrency.delay(bot)
+# send_daily_cryptocurrency.delay(bot)
 
 # CRYPTOS = defaultdict(lambda: {})
 #
