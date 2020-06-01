@@ -10,10 +10,11 @@ from collections import defaultdict
 import datetime
 import time
 import numpy as np
-from .tasks import send_daily_cryptocurrency
 # from pprint import pprint
 from .models import User
 from . import market
+
+from .tasks import send_daily_cryptocurrency
 
 # Create your views here.
 TOKEN = '1113179664:AAEaV5nToFyEdoOAF5NrhjjncnLCJKbHXGs'
@@ -45,8 +46,6 @@ def get_state(message):
 def update_state(message, state):
     USER_STATE[message.chat.id] = state
 
-
-send_daily_cryptocurrency.delay()
 
 
 '''WEBHOOK'''
@@ -192,12 +191,13 @@ def inline_buttons(call):
             bot.send_message(call.message.chat.id, 'Команда 2348', parse_mode='HTML')
 
 
-# def send_daily_cryptos():
-#     all_users = User.objects.all()
-#     for user in all_users:
-#         if not user.send_daily_prices:
-#             bot.send_message(user.user_id, 'У не вас стоит напоминание')
+def send_daily_cryptos():
+    all_users = User.objects.all()
+    for user in all_users:
+        if not user.send_daily_prices:
+            bot.send_message(user.user_id, 'У не вас стоит напоминание')
 
+send_daily_cryptocurrency.delay()
 
 # CRYPTOS = defaultdict(lambda: {})
 #
