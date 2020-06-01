@@ -46,7 +46,8 @@ def update_state(message, state):
     USER_STATE[message.chat.id] = state
 
 
-send_daily_cryptocurrency()
+send_daily_cryptocurrency.delay()
+
 
 '''WEBHOOK'''
 
