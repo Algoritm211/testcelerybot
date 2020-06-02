@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bot',
     'djcelery',
-    'djkombu',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
