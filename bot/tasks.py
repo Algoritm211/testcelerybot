@@ -8,7 +8,6 @@ bot = telebot.TeleBot(TOKEN)
 
 @app.task
 def send_daily_cryptocurrency():
-    # print('WOW')
     all_users = User.objects.all()
     for user in all_users:
         if not user.send_daily_prices:
