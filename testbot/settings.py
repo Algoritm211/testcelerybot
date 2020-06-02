@@ -132,7 +132,7 @@ r = redis.from_url(os.environ.get(REDIS_URL))
 CACHES = {
     "default": {
         "BACKEND": "redis_cache.RedisCache",
-        "LOCATION": os.environ.get(REDIS_URL)
+        "LOCATION": os.environ.get(REDIS_URL),
         }
     }
 
