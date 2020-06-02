@@ -3,6 +3,7 @@ from .models import User
 import telebot
 
 TOKEN = '1113179664:AAEaV5nToFyEdoOAF5NrhjjncnLCJKbHXGs'
+
 bot = telebot.TeleBot(TOKEN)
 
 
