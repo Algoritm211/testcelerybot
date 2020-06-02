@@ -19,8 +19,6 @@ celery = "*"
 redis = "*"
 django-redis-cache = "*"
 django-heroku = "*"
-django-celery = "*"
-django-kombu = "*"
 
 [dev-packages]
 
