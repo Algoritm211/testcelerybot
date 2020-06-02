@@ -18,6 +18,6 @@ app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 app.conf.beat = {
     'send-daily-crypto': {
         'task': 'bot.tasks.send_daily_cryptocurrency',
-        'schedule': crontab()
-    }
+        'schedule': crontab(),
+    },
 }
