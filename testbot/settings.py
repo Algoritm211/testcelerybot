@@ -14,6 +14,7 @@ import os
 import redis
 import urllib.parse as urlparse
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -139,7 +140,7 @@ CACHES = {
 # CELERY_BROKER_URL = REDIS_URL
 # CELERY_RESULT_BACKEND = REDIS_URL
 # # REDIS_HOST = 'ec2-3-220-244-30.compute-1.amazonaws.com'
-# REDIS_PORT = '14059'
+# # REDIS_PORT = '14059'
 # # REDIS_PASSWORD = 'p5067e3205757872a84ea31d841e6cf3ce88f7fcb568d463ff4dc1708d8f8c792'
 # CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
 # # CELERY_RESULT_BACKEND = 'redis://h:p5067e3205757872a84ea31d841e6cf3ce88f7fcb568d463ff4dc1708d8f8c792@ec2-3-220-244-30.compute-1.amazonaws.com:14059'
