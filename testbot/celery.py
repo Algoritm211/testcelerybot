@@ -10,8 +10,12 @@ os.environ.setdefault('REDIS_URL',
 
 app = Celery('testbot')
 app.conf.update(BROKER_URL=os.environ['REDIS_URL'],
-                CELERY_RESULT_BACKEND=os.environ['REDIS_URL'])
-app.config_from_object('django.conf:settings')
+                CELERY_RESULT_BACKEND=os.environ['REDIS_URL'],
+                CELERY_ACCEPT_CONTENT=['json'],
+                CELERY_TASK_SERIALIZER='json',
+                CELERY_RESULT_SERIALIZER='json'
+                )
+# app.config_from_object('django.conf:settings')
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 
 # celery beat task
