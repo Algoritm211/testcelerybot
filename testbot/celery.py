@@ -23,6 +23,8 @@ app = Celery('testbot')
 #                 }
 #                 )
 app.config_from_object('django.conf:settings')
+app.conf.timezone = 'UTC'
+app.conf.enable_utc = True
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 
 # celery beat task
