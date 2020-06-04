@@ -3,6 +3,7 @@ import os
 from celery import Celery
 from celery.schedules import crontab
 from django.conf import settings
+import bot.tasks
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'testbot.settings')
 # os.environ.setdefault('REDIS_URL',
