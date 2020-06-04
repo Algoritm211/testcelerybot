@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import redis
 import urllib.parse as urlparse
-
+from celery.schedules import crontab
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -122,9 +122,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
 # redis settings for celery
-os.environ.setdefault('REDIS_URL', 'redis://h:p5067e3205757872a84ea31d841e6cf3ce88f7fcb568d463ff4dc1708d8f8c792@ec2-3-220-244-30.compute-1.amazonaws.com:14059')
+os.environ.setdefault('REDIS_URL',
+                      'redis://h:p5067e3205757872a84ea31d841e6cf3ce88f7fcb568d463ff4dc1708d8f8c792@ec2-3-220-244-30.compute-1.amazonaws.com:14059')
 
 r = redis.from_url(os.environ.get('REDIS_URL'))
 # redis_url = urlparse.urlparse(os.environ.get(REDIS_URL))
@@ -133,11 +133,17 @@ CACHES = {
     "default": {
         "BACKEND": "redis_cache.RedisCache",
         "LOCATION": os.environ.get('REDIS_URL'),
-        }
     }
+}
 
-# BROKER_URL=os.environ['REDIS_URL'],
-# CELERY_RESULT_BACKEND=os.environ['REDIS_URL'],
-# CELERY_ACCEPT_CONTENT=['json'],
-# CELERY_TASK_SERIALIZER='json',
-# CELERY_RESULT_SERIALIZER='json'
+BROKER_URL = os.environ['REDIS_URL'],
+CELERY_RESULT_BACKEND = os.environ['REDIS_URL'],
+CELERY_ACCEPT_CONTENT = ['json'],
+CELERY_TASK_SERIALIZER = 'json',
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_BEAT_SCHEDULE = {
+    'send-daily-crypto': {
+        'task': 'bot.tasks.send_daily_cryptocurrency',
+        'schedule': crontab(minute='*/2'),
+    },
+}
