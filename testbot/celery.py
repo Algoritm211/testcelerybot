@@ -24,7 +24,7 @@ app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 app.conf.beat_schedule = {
     'send-daily-crypto': {
         'task': 'bot.tasks.send_daily_cryptocurrency',
-        'schedule': crontab(),
+        'schedule': crontab(minute='*/5'),
     },
 }
 
