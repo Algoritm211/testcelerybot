@@ -136,14 +136,14 @@ CACHES = {
     }
 }
 
-BROKER_URL = os.environ['REDIS_URL'],
-CELERY_RESULT_BACKEND = os.environ['REDIS_URL'],
-CELERY_ACCEPT_CONTENT = ['json'],
-CELERY_TASK_SERIALIZER = 'json',
-CELERY_RESULT_SERIALIZER = 'json'
-CELERY_BEAT_SCHEDULE = {
-    'send-daily-crypto': {
-        'task': 'bot.tasks.send_daily_cryptocurrency',
-        'schedule': crontab(minute='*/2'),
-    },
-}
+# BROKER_URL = os.environ['REDIS_URL'],
+# CELERY_RESULT_BACKEND = os.environ['REDIS_URL'],
+# CELERY_ACCEPT_CONTENT = ['json'],
+# CELERY_TASK_SERIALIZER = 'json',
+# CELERY_RESULT_SERIALIZER = 'json'
+# CELERY_BEAT_SCHEDULE = {
+#     'send-daily-crypto': {
+#         'task': 'bot.tasks.send_daily_cryptocurrency',
+#         'schedule': crontab(minute='*/2'),
+#     },
+# }
