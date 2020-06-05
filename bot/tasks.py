@@ -7,7 +7,7 @@ TOKEN = '1113179664:AAEaV5nToFyEdoOAF5NrhjjncnLCJKbHXGs'
 bot = telebot.TeleBot(TOKEN)
 
 
-@app.task(bind=True)
+@app.task
 def send_daily_cryptocurrency():
     all_users = User.objects.all()
     for user in all_users:
