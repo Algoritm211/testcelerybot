@@ -10,9 +10,6 @@ import telebot
 from telebot import types
 from collections import defaultdict
 import datetime
-import time
-import numpy as np
-# from pprint import pprint
 from .models import User
 from . import market
 
