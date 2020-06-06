@@ -1,3 +1,3 @@
 web: gunicorn testbot.wsgi
-worker: celery -A testbot worker -l info beat -E --scheduler django_celery_beat.schedulers:DatabaseScheduler
+worker: celery -A proj beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
 
