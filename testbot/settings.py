@@ -147,9 +147,9 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_ALWAYS_EAGER = True
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
-CELERY_BEAT_SCHEDULE = {
-    'send-daily-crypto': {
-        'task': 'bot.tasks.send_daily_cryptocurrency',
-        'schedule': crontab(minute='*/2'),
-    },
-}
+# CELERY_BEAT_SCHEDULE = {
+#     'send-daily-crypto': {
+#         'task': 'bot.tasks.send_daily_cryptocurrency',
+#         'schedule': crontab(minute='*/2'),
+#     },
+# }
