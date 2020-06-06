@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 from celery.task import periodic_task
 
 from testbot.celery import app
@@ -9,7 +11,7 @@ TOKEN = '1113179664:AAEaV5nToFyEdoOAF5NrhjjncnLCJKbHXGs'
 bot = telebot.TeleBot(TOKEN)
 
 
-@app.task
+@periodic_task(run_every=timedelta(minutes=1))
 def send_daily_cryptocurrency():
     all_users = User.objects.all()
     for user in all_users:
