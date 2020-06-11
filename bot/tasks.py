@@ -12,7 +12,7 @@ TOKEN = '1113179664:AAEaV5nToFyEdoOAF5NrhjjncnLCJKbHXGs'
 bot = telebot.TeleBot(TOKEN)
 
 
-@periodic_task(run_every=timedelta(hours=20, minutes=38))
+@periodic_task(run_every=timedelta(hours=20, minutes=59))
 def send_daily_cryptocurrency():
     all_users = User.objects.all()
     text = coinmarket.get_top_10()
