@@ -12,6 +12,7 @@ from collections import defaultdict
 import datetime
 from .models import User
 from . import market
+from . import parse
 
 from .tasks import send_daily_cryptocurrency
 
