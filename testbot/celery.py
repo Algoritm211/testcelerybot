@@ -11,8 +11,8 @@ app.conf.timezone = 'Europe/Kiev'
 app.autodiscover_tasks()
 
 app.conf.beat_schedule = {
-    # Executes every day at  12:30 pm.
-    'run-every-afternoon': {
+    # Executes every day at 7:30 pm.
+    'run-every-morning': {
         'task': 'bot.tasks.send_daily_cryptocurrency',
         'schedule': crontab(hour=21, minute=45),
         'args': (),
