@@ -213,6 +213,8 @@ def inline_buttons(call):
             user_data_for_set_off = User.objects.get(user_id=call.message.chat.id)
             user_data_for_set_off.send_daily_prices = 'true'
             user_data_for_set_off.save()
+            print(user_data_for_set_off.send_daily_prices)
+
             bot.answer_callback_query(callback_query_id=call.id, text='Уведомления включены')
 
 # send_daily_cryptocurrency.delay()
