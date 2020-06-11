@@ -209,15 +209,14 @@ def inline_buttons(call):
             user_data_for_set_on = User.objects.get(user_id=call.message.chat.id)
             user_data_for_set_on.send_daily_prices = False
             user_data_for_set_on.save()
-            bot.answer_callback_query(callback_query_id=call.id, text='Уведомления выключены')
+            bot.answer_callback_query(callback_query_id=call.id, show_alert='Уведомления выключены', )
         elif call.data == 'set_notif_on':
-            print('AAAAAAAAAAAAAAAAAAAAAAAAAA')
             user_data_for_set_off = User.objects.get(user_id=call.message.chat.id)
             user_data_for_set_off.send_daily_prices = True
             user_data_for_set_off.save()
             print(user_data_for_set_off.send_daily_prices)
 
-            bot.answer_callback_query(callback_query_id=call.id, text='Уведомления включены')
+            bot.answer_callback_query(callback_query_id=call.id, show_alert='Уведомления включены')
 
 # send_daily_cryptocurrency.delay()
 
