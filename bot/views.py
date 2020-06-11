@@ -185,6 +185,7 @@ def message_cryptos(message):
         if user_data.send_daily_prices:
             button_set_false = types.InlineKeyboardButton('Выключить уведомления', callback_data='set_notif_off')
             keyboard_notif.add(button_set_false)
+
         elif not user_data.send_daily_prices:
             button_set_true = types.InlineKeyboardButton('Включить уведомления', callback_data='set_notif_on')
             keyboard_notif.add(button_set_true)
@@ -207,10 +208,12 @@ def inline_buttons(call):
             user_data_for_set_on = User.objects.get(user_is=call.message.chat.id)
             user_data_for_set_on.send_daily_prices = True
             user_data_for_set_on.save()
+            bot.answer_callback_query(callback_query_id=call.id, text='Уведомления выключены')
         elif call.data == 'send_notif_on':
             user_data_for_set_off = User.objects.get(user_is=call.message.chat.id)
             user_data_for_set_off.send_daily_prices = False
             user_data_for_set_off.save()
+            bot.answer_callback_query(callback_query_id=call.id, text='Уведомления включены')
 
 
 # send_daily_cryptocurrency.delay()
