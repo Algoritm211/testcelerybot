@@ -218,7 +218,7 @@ def inline_buttons(call):
 
             bot.answer_callback_query(callback_query_id=call.id, text='Уведомления включены', show_alert=True)
 
-# send_daily_cryptocurrency.delay()
+send_daily_cryptocurrency.delay()
 
 # bot.polling(none_stop=True)
 # if __name__ == '__main__':
