@@ -180,7 +180,7 @@ def message_cryptos(message):
         else:
             bot.send_message(message.chat.id, text, parse_mode='HTML')
     if 'настройка уведомлений' in message.text.lower():
-        user_data = User.objects.filter(user_id=message.chat.id)
+        user_data = User.objects.get(user_id=message.chat.id)
         keyboard_notif = types.InlineKeyboardMarkup(row_width=1)
         if user_data.send_daily_prices:
             button_set_false = types.InlineKeyboardButton('Выключить уведомления', callback_data='set_notif_off')
