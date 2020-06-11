@@ -25,7 +25,7 @@ def send_daily_cryptocurrency():
 app.conf.beat_schedule = {
     'task-name': {
         'task': 'tasks.send_daily_cryptocurrency',
-        'schedule': crontab()
+        'schedule': crontab(minute=10, hour=18)
     },
 }
-app.conf.timezone = 'UTC'
+app.conf.timezone = 'Europe/Kiev'
