@@ -11,9 +11,9 @@ app.conf.timezone = 'UTC'
 app.conf.enable_utc = True
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 
-app.conf.celery_beat = {
-    'send-daily-crypto': {
-        'task': 'bot.tasks.send_daily_cryptocurrency',
-        'schedule': crontab(minute='*/1'),
-    },
-}
+# app.conf.celery_beat = {
+#     'send-daily-crypto': {
+#         'task': 'bot.tasks.send_daily_cryptocurrency',
+#         'schedule': crontab(minute='*/1'),
+#     },
+# }
