@@ -209,6 +209,7 @@ def inline_buttons(call):
             user_data_for_set_on.send_daily_prices = True
             user_data_for_set_on.save()
             bot.answer_callback_query(callback_query_id=call.id, text='Уведомления выключены')
+            bot.edit_message_text(inline_message_id=call.inline_message_id, text="Бдыщь")
         elif call.data == 'send_notif_on':
             user_data_for_set_off = User.objects.get(user_is=call.message.chat.id)
             user_data_for_set_off.send_daily_prices = False
