@@ -17,5 +17,5 @@ def send_daily_cryptocurrency():
     all_users = User.objects.all()
     text = coinmarket.get_top_10()
     for user in all_users:
-        if not user.send_daily_prices:
+        if user.send_daily_prices:
             bot.send_message(user.user_id, text, parse_mode='HTML')
