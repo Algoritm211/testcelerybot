@@ -13,7 +13,7 @@ TOKEN = '1113179664:AAEaV5nToFyEdoOAF5NrhjjncnLCJKbHXGs'
 bot = telebot.TeleBot(TOKEN)
 
 
-@app.task
+@periodic_task(run_every=timedelta(minutes=2))
 def send_daily_cryptocurrency():
     all_users = User.objects.all()
     text = coinmarket.get_top_10()
@@ -22,10 +22,10 @@ def send_daily_cryptocurrency():
             bot.send_message(user.user_id, text, parse_mode='HTML')
 
 
-app.conf.beat_schedule = {
-    'task-name': {
-        'task': 'tasks.send_daily_cryptocurrency',
-        'schedule': crontab(minute='*/3')
-    },
-}
-app.conf.timezone = 'Europe/Kiev'
+# app.conf.beat_schedule = {
+#     'task-name': {
+#         'task': 'tasks.send_daily_cryptocurrency',
+#         'schedule': crontab(minute='*/3')
+#     },
+# }
+# app.conf.timezone = 'Europe/Kiev'
