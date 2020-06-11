@@ -193,7 +193,7 @@ def message_cryptos(message):
 
         bot.send_message(message.chat.id,
                          '<b>Уведомления</b>\n + У Вас есть возможность включить уведомления о самых актуальных ценах ТОП-10 криптовалют.\n' + \
-                         'Бот будет присылать Вам уведомление каждый день в <b>7:30</b>\n\n. <i>От уведомлений можно отказаться в любой удобный момент</i>',
+                         'Бот будет присылать Вам уведомление каждый день в <b>7:30.</b>\n\n <i>От уведомлений можно отказаться в любой удобный момент</i>',
                          parse_mode='HTML', reply_markup=keyboard_notif)
 
 
@@ -209,14 +209,14 @@ def inline_buttons(call):
             user_data_for_set_on = User.objects.get(user_id=call.message.chat.id)
             user_data_for_set_on.send_daily_prices = False
             user_data_for_set_on.save()
-            bot.answer_callback_query(callback_query_id=call.id, show_alert='Уведомления выключены', )
+            bot.answer_callback_query(callback_query_id=call.id, text='Уведомления выключены', show_alert=True )
         elif call.data == 'set_notif_on':
             user_data_for_set_off = User.objects.get(user_id=call.message.chat.id)
             user_data_for_set_off.send_daily_prices = True
             user_data_for_set_off.save()
             print(user_data_for_set_off.send_daily_prices)
 
-            bot.answer_callback_query(callback_query_id=call.id, show_alert='Уведомления включены')
+            bot.answer_callback_query(callback_query_id=call.id, text='Уведомления включены', show_alert=True)
 
 # send_daily_cryptocurrency.delay()
 
