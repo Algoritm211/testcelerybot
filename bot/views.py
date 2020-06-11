@@ -82,6 +82,7 @@ def message_start(message):
 def message_help(message):
     markup_author = types.InlineKeyboardMarkup(row_width=1)
     item_author = types.InlineKeyboardButton('Об авторе бота', callback_data='author')
+    markup_author.add(item_author)
     # markup_author.add(item_author)
     bot.send_message(message.chat.id,
                      '❓Итак, в настоящий момент бот может показать Вам цену цифровых активов с биржи ' +
