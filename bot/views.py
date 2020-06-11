@@ -206,12 +206,12 @@ def inline_buttons(call):
             bot.send_message(call.message.chat.id, 'Команда 2348', parse_mode='HTML')
         elif call.data == 'set_notif_off':
             user_data_for_set_on = User.objects.get(user_id=call.message.chat.id)
-            user_data_for_set_on.send_daily_prices = False
+            user_data_for_set_on.send_daily_prices = 'f'
             user_data_for_set_on.save()
             bot.answer_callback_query(callback_query_id=call.id, text='Уведомления выключены')
         elif call.data == 'send_notif_on':
             user_data_for_set_off = User.objects.get(user_id=call.message.chat.id)
-            user_data_for_set_off.send_daily_prices = True
+            user_data_for_set_off.send_daily_prices = 't'
             user_data_for_set_off.save()
             bot.answer_callback_query(callback_query_id=call.id, text='Уведомления включены')
 
