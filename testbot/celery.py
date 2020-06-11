@@ -14,7 +14,6 @@ app.conf.beat_schedule = {
     # Executes every day at 7:30 pm.
     'run-every-morning': {
         'task': 'bot.tasks.send_daily_cryptocurrency',
-        'schedule': crontab(hour=21, minute=45),
-        'args': (),
+        'schedule': crontab(hour=21, minute=55)
     },
 }
