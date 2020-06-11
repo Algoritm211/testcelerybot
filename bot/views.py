@@ -34,6 +34,7 @@ GOTOSET, FINAL = range(2)
 
 keyboard_1 = telebot.types.ReplyKeyboardMarkup(True, False, row_width=1)
 keyboard_1.row('My MarketCap')
+keyboard_1.row('Настройка уведомлений')
 
 USER_STATE = defaultdict(lambda: GOTOSET)
 
@@ -177,6 +178,20 @@ def message_cryptos(message):
             bot.send_message(message.chat.id, 'Введенный Вами тикер токена не торгуется против USDT и BTC')
         else:
             bot.send_message(message.chat.id, text, parse_mode='HTML')
+    if 'настройка уведомлений' in message.text.lower():
+        user_data = User.objects.filter(user_id=message.chat.id)
+        keyboard_notif = types.InlineKeyboardMarkup(row_width=1)
+        if user_data.send_daily_prices:
+            button_set_false = types.InlineKeyboardButton('Выключить уведомления', callback_data='set_notif_off')
+            keyboard_notif.add(button_set_false)
+        elif not user_data.send_daily_prices:
+            button_set_true = types.OutlineKeyboardButton('Включить уведомления', callback_data='set_notif_on')
+            keyboard_notif.add(button_set_true)
+
+        bot.send_message(message.chat.id,
+                         '<b>Уведомления</b>\n + У Вас есть возможность включить уведомления о самых актуальных ценах ТОП-10 криптовалют.\n' + \
+                         'Бот будет присылать Вам уведомление каждый день в <b>7:30</b>\n\n. <i>От уведомлений можно отказаться в любой удобный момент</i>',
+                         parse_mode='HTML', reply_markup=keyboard_notif)
 
 
 @bot.callback_query_handler(func=lambda call: True)
@@ -187,23 +202,12 @@ def inline_buttons(call):
             bot.send_document(call.message.chat.id, help_file)
         elif call.data == 'author':
             bot.send_message(call.message.chat.id, 'Команда 2348', parse_mode='HTML')
-
-
-# def send_daily_cryptos():
-#     all_users = User.objects.all()
-#     for user in all_users:
-#         if not user.send_daily_prices:
-#             bot.send_message(user.user_id, 'У не вас стоит напоминание')
+        elif call.data == 'notification':
+            pass
 
 
 send_daily_cryptocurrency.delay()
 
-# CRYPTOS = defaultdict(lambda: {})
-#
-# def update_cryptos(id, name, values):
-#     dbhelper.write_users_crypto(id, name, values)
-# def get_cryptos(id):
-#     return CRYPTOS[id]
 # bot.polling(none_stop=True)
 # if __name__ == '__main__':
 #     app.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
