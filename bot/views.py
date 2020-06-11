@@ -186,7 +186,7 @@ def message_cryptos(message):
             button_set_false = types.InlineKeyboardButton('Выключить уведомления', callback_data='set_notif_off')
             keyboard_notif.add(button_set_false)
         elif not user_data.send_daily_prices:
-            button_set_true = types.OutlineKeyboardButton('Включить уведомления', callback_data='set_notif_on')
+            button_set_true = types.InlineKeyboardButton('Включить уведомления', callback_data='set_notif_on')
             keyboard_notif.add(button_set_true)
 
         bot.send_message(message.chat.id,
