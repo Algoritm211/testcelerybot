@@ -167,7 +167,7 @@ def message_cryptos(message):
             text += '<b>Информация с портала CoinMarketCap по состоянию на ' + now.strftime("%d-%m-%Y") + '.</b>\n\n'
             text += '<i>Вы всегда можете изменить отслеживаемые криптовалюты с помощью команды</i> /set'
             bot.send_message(message.chat.id, text, parse_mode='HTML')
-    else:
+    elif message.text.lower() != 'настройка уведомлений':
         text_up = message.text.upper()
         mes_usdt = parse.get_crypto_to_usdt(message.text)
         mes_btc = parse.get_crypto_to_btc(message.text)
@@ -207,7 +207,7 @@ def inline_buttons(call):
             pass
 
 
-send_daily_cryptocurrency.delay()
+# send_daily_cryptocurrency.delay()
 
 # bot.polling(none_stop=True)
 # if __name__ == '__main__':
