@@ -206,16 +206,14 @@ def inline_buttons(call):
             bot.send_message(call.message.chat.id, 'Команда 2348', parse_mode='HTML')
         elif call.data == 'set_notif_off':
             user_data_for_set_on = User.objects.get(user_is=call.message.chat.id)
-            user_data_for_set_on.send_daily_prices = True
+            user_data_for_set_on.send_daily_prices = False
             user_data_for_set_on.save()
             bot.answer_callback_query(callback_query_id=call.id, text='Уведомления выключены')
-            bot.edit_message_text(inline_message_id=call.inline_message_id, text="Бдыщь")
         elif call.data == 'send_notif_on':
             user_data_for_set_off = User.objects.get(user_is=call.message.chat.id)
-            user_data_for_set_off.send_daily_prices = False
+            user_data_for_set_off.send_daily_prices = True
             user_data_for_set_off.save()
             bot.answer_callback_query(callback_query_id=call.id, text='Уведомления включены')
-            bot.edit_message_text(inline_message_id=call.inline_message_id, text="Бдыщь")
 
 # send_daily_cryptocurrency.delay()
 
